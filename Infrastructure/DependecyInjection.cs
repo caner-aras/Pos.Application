@@ -1,14 +1,20 @@
 using System.Text;
 using Application.Interfaces;
+using Common;
 using Domain.Entities.Auth;
 using Infrastructure.Auth.JWT;
 using Infrastructure.Identity;
 using Infrastructure.Identity.Services;
+using Infrastructure.Repositories;
+using Infrastructure.Service.Merchant.Transactions;
+using Infrastructure.UnitOfWork;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.IdentityModel.Tokens;
 
 namespace Infrastructure
@@ -23,7 +29,10 @@ namespace Infrastructure
                 .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddScoped<IUserManager, UserManagerService>();
+            services.AddScoped<ITransactionService, TransactionService>();
+            //services.AddScoped<ITransactionRepositories, TransactionRepositories>();
 
+            services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddTransient<IJwtFactory, JwtFactory>();
 
             services.AddCors(options => options.AddPolicy("AllowAll", p => p.AllowAnyOrigin()
@@ -34,6 +43,7 @@ namespace Infrastructure
             var jwtSettings = new JwtSettings();
             configuration.Bind(nameof(jwtSettings), jwtSettings);
             services.AddSingleton(jwtSettings);
+
             // jwt
 
             var tokenValidationParameters = new TokenValidationParameters

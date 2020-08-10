@@ -6,6 +6,7 @@ namespace Application
     {
         protected override void Load(ContainerBuilder builder)
         {
+
         }
     }
 }

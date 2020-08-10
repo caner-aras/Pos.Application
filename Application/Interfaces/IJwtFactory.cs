@@ -1,7 +1,7 @@
 ﻿using System.Security.Claims;
 using System.Threading.Tasks;
-using Application.Viewmodels;
 using Domain.Entities.Auth;
+using Domain.Viewmodels;
 
 namespace Application.Interfaces {
     public interface IJwtFactory {

@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-
+using System.Threading.Tasks;
 
 namespace Common.Interfaces
 {
@@ -10,15 +10,10 @@ namespace Common.Interfaces
     {
         IEnumerable<T> Get();
         IEnumerable<T> Find(Expression<Func<T, bool>> predicate);
-        
-        
-        // void Add (T entity);
-        // void Delete (T entity);
-        // void Update (T entity);
 
-        IQueryable<T> Query(string sql, params object[] parameters);
+        Task<T> GetAsync(Expression<Func<T, bool>> expression);
 
-        T Search(params object[] keyValues);
+        T Include(Expression<Func<T, bool>> expression, string[] include);
 
         void Add(T entity);
         void Add(params T[] entities);

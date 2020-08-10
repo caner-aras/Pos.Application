@@ -1,7 +1,7 @@
 ﻿using Application.Exceptions;
-using Application.Viewmodels;
 using Domain;
 using Domain.Entities;
+using Domain.Viewmodels;
 using Infrastructure;
 using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;

@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Application.Viewmodels
+namespace Domain.Viewmodels
 {
     public class AuthenticationResult
     {

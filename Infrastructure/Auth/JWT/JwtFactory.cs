@@ -8,8 +8,8 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using Application.Interfaces;
-using Application.Viewmodels;
 using Domain.Entities.Auth;
+using Domain.Viewmodels;
 using Infrastructure.Identity;
 
 using Microsoft.AspNetCore.Identity;

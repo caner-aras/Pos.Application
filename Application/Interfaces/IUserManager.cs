@@ -1,5 +1,5 @@
 ﻿using System.Threading.Tasks;
-using Application.Viewmodels;
+using Domain.Viewmodels;
 
 namespace Application.Interfaces {
     public interface IUserManager {
